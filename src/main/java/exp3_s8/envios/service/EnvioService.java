@@ -1,9 +1,9 @@
-package exp3_s6.envios.service;
+package exp3_s8.envios.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import exp3_s6.envios.model.Envio;
+import exp3_s8.envios.model.Envio;
 
 public interface EnvioService {
     List<Envio> getAllEnvios();

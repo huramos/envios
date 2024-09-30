@@ -1,4 +1,4 @@
-package exp3_s6.envios.controller;
+package exp3_s8.envios.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

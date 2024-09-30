@@ -1,4 +1,4 @@
-package exp3_s6.envios.model;
+package exp3_s8.envios.model;
 
 import org.springframework.hateoas.RepresentationModel;
 
@@ -10,6 +10,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 
 @Entity
 @Table(name = "envio")

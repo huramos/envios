@@ -1,4 +1,4 @@
-package exp3_s6.envios;
+package exp3_s8.envios;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
