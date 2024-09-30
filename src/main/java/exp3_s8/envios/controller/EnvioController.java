@@ -5,11 +5,14 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -37,10 +40,22 @@ public class EnvioController {
     private final EnvioService envioService;
 
     @GetMapping
-    public List<Envio> getAllEnvios() {
+    public CollectionModel<EntityModel<Envio>> getAllEnvios() {
+        List<Envio> envios = envioService.getAllEnvios();
         log.info("GET /envios");
-        log.info("Retornando todos los Envios");
-        return envioService.getAllEnvios();
+        log.info("Retornando todos los envios");
+        List<EntityModel<Envio>> enviosResources = envios.stream()
+                .map(envio -> EntityModel.of(envio,
+                        WebMvcLinkBuilder
+                                .linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getEnvioById(envio.getIdEnvio()))
+                                .withSelfRel()))
+                .collect(Collectors.toList());
+
+        WebMvcLinkBuilder linkTo = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).getAllEnvios());
+        CollectionModel<EntityModel<Envio>> resources = CollectionModel.of(enviosResources,
+                linkTo.withRel("envios"));
+
+        return resources;
     }
 
     @GetMapping("/{id}")
