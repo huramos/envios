@@ -1,4 +1,4 @@
-package exp3_s8.envios.repository;
+package exp3_s8.envios;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import exp3_s8.envios.model.Envio;
+import exp3_s8.envios.repository.EnvioRepository;
 import exp3_s8.envios.service.EnvioServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
